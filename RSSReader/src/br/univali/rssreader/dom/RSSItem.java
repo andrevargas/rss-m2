@@ -1,10 +1,10 @@
 
-package rssreader;
+package br.univali.rssreader.dom;
 
 import java.util.Date;
 
-public class Item {
-    
+public class RSSItem {
+
     private Date pubDate;
     private String title;
     private String description;
@@ -50,4 +50,5 @@ public class Item {
     public void setAuthor(String author) {
         this.author = author;
     }
+    
 }
