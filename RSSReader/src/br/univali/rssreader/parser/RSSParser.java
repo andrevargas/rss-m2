@@ -2,6 +2,7 @@
 package br.univali.rssreader.parser;
 
 import br.univali.rssreader.dom.RSSChannel;
+import br.univali.rssreader.dom.RSSChannelImage;
 import br.univali.rssreader.dom.RSSDocument;
 import br.univali.rssreader.dom.RSSItem;
 import java.text.DateFormat;
@@ -10,29 +11,26 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
 
 public class RSSParser {
 
-    public RSSDocument parseDocument(Document xmlDocument) throws RSSParseException {
+    public RSSDocument parseDocument(Document xmlDocument) {
 
         Element xmlRoot = xmlDocument.getRootElement();
         Element xmlChannel = xmlRoot.getChild("channel");
-
-        RSSChannel channel = new RSSChannel();
-        channel.setItems(parseItems(xmlChannel));
-
-        RSSDocument document = new RSSDocument();
-        document.setVersion(xmlRoot.getAttributeValue("version"));
-        document.setChannel(channel);
+        
+        RSSChannel channel = parseChannel(xmlChannel);
+        RSSDocument document = new RSSDocument(channel);
 
         return document;
 
     }
 
-    private List<RSSItem> parseItems(Element xmlChannel) throws RSSParseException {
+    private List<RSSItem> parseItems(Element xmlChannel) {
 
         List<RSSItem> items = new ArrayList<>();
         List<Element> elements = xmlChannel.getChildren("item");
@@ -45,14 +43,7 @@ public class RSSParser {
             item.setAuthor(element.getChildText("author"));
             item.setDescription(element.getChildText("description"));
             item.setLink(element.getChildText("link"));
-
-            try {
-                DateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz");
-                Date pubDate = formatter.parse(element.getChildText("pubDate"));
-                item.setPubDate(pubDate);
-            } catch (ParseException ex) {
-                throw new RSSParseException("Data de publicação possui formato inválido.", ex);
-            }
+            item.setPubDate(element.getChildText("pubDate"));
 
             items.add(item);
 
@@ -62,4 +53,26 @@ public class RSSParser {
 
     }
 
+    
+    private RSSChannel parseChannel(Element xmlChannel) {
+        
+        String title = xmlChannel.getChildText("title");
+        
+        RSSChannelImage image = new RSSChannelImage();
+        
+        if (xmlChannel.getChild("image") != null) {
+            
+            Element xmlImage = xmlChannel.getChild("image");
+            image.setUrl(xmlImage.getChildText("url"));
+            image.setTitle(xmlImage.getChildText("title"));
+            image.setLink(xmlImage.getChildText("link"));
+            
+        }
+        
+        List<RSSItem> items = parseItems(xmlChannel);
+        
+        return new RSSChannel(title, image, items);
+       
+    }
+    
 }

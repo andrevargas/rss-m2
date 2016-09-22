@@ -1,7 +1,6 @@
 
 package br.univali.rssreader.dom;
 
-import java.util.Date;
 
 public class RSSItem {
 
@@ -10,10 +9,7 @@ public class RSSItem {
     private String description;
 
     private String author;
-    private String comments;
-    private String enclosure;
-    private Date pubDate;
-    private String source;
+    private String pubDate;
 
     public String getTitle() {
         return title;
@@ -47,36 +43,12 @@ public class RSSItem {
         this.author = author;
     }
 
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
-    }
-
-    public String getEnclosure() {
-        return enclosure;
-    }
-
-    public void setEnclosure(String enclosure) {
-        this.enclosure = enclosure;
-    }
-
-    public Date getPubDate() {
+    public String getPubDate() {
         return pubDate;
     }
 
-    public void setPubDate(Date pubDate) {
+    public void setPubDate(String pubDate) {
         this.pubDate = pubDate;
     }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
+    
 }

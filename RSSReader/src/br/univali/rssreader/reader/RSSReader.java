@@ -8,7 +8,6 @@ import java.net.URL;
 import org.jdom2.Document;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
-import br.univali.rssreader.parser.RSSParseException;
 import br.univali.rssreader.parser.RSSParser;
 
 
@@ -20,7 +19,7 @@ public class RSSReader {
         this.address = address;
     }
 
-    public RSSDocument read() throws RSSReadException, RSSParseException {
+    public RSSDocument read() throws RSSReadException {
 
         try {
 
