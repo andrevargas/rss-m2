@@ -1,0 +1,24 @@
+* {margin: 0; padding: 0;}
+
+html { font-family: 'Lato', serif; background: #BCBCBC; padding:10px 20px; font-size: 14px;}
+
+ul, li {list-style: none;}
+
+li {padding: 10px; background: #E9E9E9; margin-bottom: 10px;}
+
+a {text-decoration: none; color: #0f3f76;}
+
+h1 {color: #0f3f76;}
+
+.details {font-size: .8em; color: #424242;}
+
+.description {margin-top: 10px; text-align: justify;}
+
+#channel {vertical-align: middle; margin: 20px 0;}
+#channel a {}
+#channel img {display: inline-block; max-width: 100px; vertical-align: middle; margin-right: 10px; }
+
+#form * {text-align: center;}
+#form h1 {margin-bottom: 20px; margin-top: 10%;}
+form input[type="text"], form input[type="submit"] {border:none; background: #E9E9E9; font-size: 1.2em; padding: 5px; color: #0f3f76; font-family: 'Lato', serif;}
+form input[type="submit"] {background: #0f3f76; color: #E9E9E9; margin-left: 5px; padding: 5px 10px;}
