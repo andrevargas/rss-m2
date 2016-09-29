@@ -60,10 +60,6 @@ class RSSDAO {
         
         $channelElements[] = $image;
         
-        foreach ($channelElements as $element) {
-            $channel->appendChild($element);
-        }
-        
         $channelElements = array_merge($channelElements, $this->getItems($document));
         
         foreach ($channelElements as $element) {

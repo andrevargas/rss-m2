@@ -3,7 +3,7 @@ package br.univali.rssreader.reader;
 
 public class RSSReadException extends Exception {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 7471879800578241077L;
 
     public RSSReadException() {}
 

@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class RSSChannel {
-    
+
     private final String title;
     private final RSSChannelImage image;
     private final List<RSSItem> items;
@@ -27,5 +27,5 @@ public class RSSChannel {
     public List<RSSItem> getItems() {
         return items;
     }
-    
+
 }
