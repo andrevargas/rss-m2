@@ -22,3 +22,8 @@ h1 {color: #0f3f76;}
 #form h1 {margin-bottom: 20px; margin-top: 10%;}
 form input[type="text"], form input[type="submit"] {border:none; background: #E9E9E9; font-size: 1.2em; padding: 5px; color: #0f3f76; font-family: 'Lato', serif;}
 form input[type="submit"] {background: #0f3f76; color: #E9E9E9; margin-left: 5px; padding: 5px 10px;}
+
+.error {
+    margin-top: 10%; 
+    text-align: center;
+}

@@ -18,9 +18,13 @@
         
         <c:choose>
             <c:when test="${not empty error}">
-                <h1>${error}</h1>
+                <div class="error">
+                    <h1>${error}</h1>
+                    <a href="/RSSViewer/">< Rückkehr</a>
+                </div>
             </c:when>    
             <c:otherwise>        
+                <a href="/RSSViewer/">< Rückkehr</a>
                 <h1 id="channel">
                     <c:if test="${channel.image != null}"><a href="${channel.image.link}"><img src="${channel.image.url}" title="${channel.image.title}"/></a></c:if>
                     ${channel.title}
