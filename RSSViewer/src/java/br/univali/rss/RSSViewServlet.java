@@ -2,7 +2,7 @@
 package br.univali.rss;
 
 import br.univali.rssreader.dom.RSSDocument;
-import br.univali.rssreader.reader.RSSReadException;
+import br.univali.rssreader.exception.RSSException;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,7 +25,7 @@ public class RSSViewServlet extends HttpServlet {
         try {
             RSSDocument document = reader.read();
             req.setAttribute("channel", document.getChannel());
-        } catch (RSSReadException ex) {
+        } catch (RSSException ex) {
             req.setAttribute("error", ex.getMessage());
         }
 

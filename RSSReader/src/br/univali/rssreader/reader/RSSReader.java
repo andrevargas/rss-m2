@@ -1,7 +1,9 @@
 
 package br.univali.rssreader.reader;
 
+import br.univali.rssreader.exception.RSSReadException;
 import br.univali.rssreader.dom.RSSDocument;
+import br.univali.rssreader.exception.RSSParseException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -19,7 +21,7 @@ public class RSSReader {
         this.address = address;
     }
 
-    public RSSDocument read() throws RSSReadException {
+    public RSSDocument read() throws RSSReadException, RSSParseException {
 
         try {
 

@@ -5,6 +5,7 @@ import br.univali.rssreader.dom.RSSChannel;
 import br.univali.rssreader.dom.RSSChannelImage;
 import br.univali.rssreader.dom.RSSDocument;
 import br.univali.rssreader.dom.RSSItem;
+import br.univali.rssreader.exception.RSSParseException;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Document;
@@ -13,10 +14,19 @@ import org.jdom2.Element;
 
 public class RSSParser {
 
-    public RSSDocument parseDocument(Document xmlDocument) {
+    public RSSDocument parseDocument(Document xmlDocument) throws RSSParseException {
 
         Element xmlRoot = xmlDocument.getRootElement();
+
+        if (!xmlRoot.getName().equals("rss")) {
+            throw new RSSParseException("O documento informado não é um feed RSS válido.");
+        }
+
         Element xmlChannel = xmlRoot.getChild("channel");
+
+        if (xmlChannel == null) {
+            throw new RSSParseException("O documento RSS não possui um canal.");
+        }
 
         RSSChannel channel = parseChannel(xmlChannel);
         RSSDocument document = new RSSDocument(channel);
